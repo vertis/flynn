@@ -1,12 +1,18 @@
 #!/usr/bin/env ruby
 require "rubygems" # ruby1.9 doesn't "require" it though
 require "thor"
+require 'lib/flynn'
 
-class Flynn < Thor
+class FlynnRunner < Thor
   desc "create", "create a new application"
+  method_options %w( version -v ) => :string
   def create(app_type, app_name)
-    puts "Creating #{app_type}: #{app_name}"
+    if Flynn::Recipes.const_defined?(app_type.capitalize)
+      Flynn::Recipes.const_get(app_type.capitalize).new.create(app_name, options)
+    else
+      $stderr.puts "Flynn doesn't know how to create: #{app_type}"
+    end
   end
 end
 
-Flynn.start
+FlynnRunner.start
