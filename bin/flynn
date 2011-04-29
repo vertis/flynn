@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
 require "rubygems" # ruby1.9 doesn't "require" it though
 require "thor"
-require 'lib/flynn'
+require 'flynn'
 
 class FlynnRunner < Thor
   desc "create", "create a new application"

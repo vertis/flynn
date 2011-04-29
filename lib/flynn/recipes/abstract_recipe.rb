@@ -24,6 +24,15 @@ module Flynn
         #   end
         # end
 
+        def create_project_rvmrc(app_name)
+          rvmrc = <<-RVMRC
+          rvm_gemset_create_on_use_flag=1
+          rvm #{@ruby_version}@#{app_name}
+          RVMRC
+          File.open("#{app_name}/.rvmrc", 'w') {|f| f.write(rvmrc) }
+          system("cd #{app_name} && rvm rvmrc trust")
+        end
+
       private
         def load_rvm
           # load in RVM environment
