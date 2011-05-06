@@ -2,7 +2,6 @@ module Flynn
   module Recipes
     class AbstractRecipe
       def initialize
-        puts "Loading RVM"
         load_rvm
       end
 
@@ -27,7 +26,7 @@ module Flynn
         def create_project_rvmrc(app_name)
           rvmrc = <<-RVMRC
           rvm_gemset_create_on_use_flag=1
-          rvm #{@ruby_version}@#{app_name}
+          rvm use #{@ruby_version}@#{app_name}
           RVMRC
           File.open("#{app_name}/.rvmrc", 'w') {|f| f.write(rvmrc) }
           system("cd #{app_name} && rvm rvmrc trust")
@@ -35,6 +34,8 @@ module Flynn
 
       private
         def load_rvm
+          return true if defined?(RVM)
+          puts "Loading RVM"
           # load in RVM environment
           if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
             begin

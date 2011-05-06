@@ -1,2 +1,2 @@
 rvm_gemset_create_on_use_flag=1
-rvm ree-1.8.7-2011.03@flynn
+rvm use 1.9.2@flynn
