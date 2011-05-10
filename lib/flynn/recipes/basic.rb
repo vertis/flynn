@@ -1,7 +1,7 @@
 module Flynn
   module Recipes
     class Basic < AbstractRecipe
-      def create(app_name, *options)
+      def create(app_name, options)
         require 'fileutils'
         puts "Creating #{app_name}"
         FileUtils.mkdir(app_name)
