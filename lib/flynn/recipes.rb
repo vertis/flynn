@@ -1,4 +1,4 @@
-require 'flynn/recipes/abstract_recipe'
+require 'flynn/recipes/rvm_base'
 require 'flynn/recipes/gem'
 require 'flynn/recipes/basic'
 require 'flynn/recipes/rails2'

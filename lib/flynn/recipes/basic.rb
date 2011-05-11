@@ -1,6 +1,6 @@
 module Flynn
   module Recipes
-    class Basic < AbstractRecipe
+    class Basic < RvmBase
       def create(app_name, options={})
         require 'fileutils'
         puts "Creating #{app_name}"

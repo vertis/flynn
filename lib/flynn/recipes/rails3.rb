@@ -2,7 +2,7 @@ require 'fileutils'
 
 module Flynn
   module Recipes
-    class Rails3 < AbstractRecipe
+    class Rails3 < RvmBase
       def create(app_name, options)
         RVM.gemset_create app_name
         RVM.gemset_use! app_name

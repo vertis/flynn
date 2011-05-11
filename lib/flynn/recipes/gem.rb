@@ -1,6 +1,6 @@
 module Flynn
   module Recipes
-    class Gem < AbstractRecipe
+    class Gem < RvmBase
       def create(app_name, *options)
         puts "Creating new project in: #{app_name}"
         system("bundle gem #{app_name}")
