@@ -6,7 +6,7 @@ describe Flynn::Config do
     before :all do
       @flynn_directory = Pathname.new("#{ENV["HOME"]}/.flynn")
       @recipes_directory = @flynn_directory + 'recipes'
-      @config_file = @flynn_directory + 'config'
+      @config_file = @flynn_directory + 'config.yml'
     end
 
     it "should create the .flynn directory if it doesn't exist" do

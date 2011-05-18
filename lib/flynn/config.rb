@@ -4,6 +4,7 @@ module Flynn
   class Config
     def build
       recipes_directory.mkpath # will make the .flynn directory as well
+      config_file.open('w').close # is there an easier way
       self
     end
 
