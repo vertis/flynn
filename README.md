@@ -16,10 +16,6 @@ The tool currently hooks into RVM heavily for the creation of ruby projects. The
 
         $> gem install flynn
 
-* List Flynn recipes:
-
-        $> flynn list
-
  * Create a new rails3 project:
 
         $> flynn rails3 awesomeproject -J -O -m ../templates/heroku_template.rb
@@ -28,7 +24,7 @@ The tool currently hooks into RVM heavily for the creation of ruby projects. The
 
     $> mate ~/.flynn/recipes/my_sinatra.rb
     class Flynn::Recipes::MySinatra
-      def create(app_name, options={})
+      def create(app_name, options=[])
         # Do whatever tasks you want
       end
     end
