@@ -3,7 +3,7 @@ require 'cover_me'
 require "flynn"
 
 RSpec.configure do |config|
-  config.after(:suite) do
-    CoverMe.complete!
-  end
+  # config.after(:suite) do
+  #   CoverMe.complete!
+  # end
 end

@@ -6,7 +6,7 @@ describe Flynn::Recipes::Basic do
     subject.should respond_to(:create)
   end
 
-  it "should create a directory" do
+  it "should create a new basic project with the correct name" do
     Dir.chdir('tmp')
     subject.create('my_directory')
     File.exists?('my_directory').should be_true
