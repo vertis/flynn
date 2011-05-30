@@ -3,6 +3,7 @@ require 'flynn/recipes/gem'
 require 'flynn/recipes/basic'
 require 'flynn/recipes/rails2'
 require 'flynn/recipes/rails3'
+require 'flynn/recipes/rails_edge'
 require 'flynn/recipes/sinatra'
 
 module Flynn

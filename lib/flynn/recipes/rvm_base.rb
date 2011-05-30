@@ -1,6 +1,8 @@
 module Flynn
   module Recipes
     class RvmBase
+      include Flynn::Helpers
+
       def initialize
         load_rvm
       end
@@ -17,6 +19,14 @@ module Flynn
       end
 
       private
+        def restore_rvmrc
+          FileUtils.mv('.rvmrc_backup','.rvmrc')
+        end
+
+        def disable_rvmrc
+          FileUtils.mv('.rvmrc','.rvmrc_backup')
+        end
+
         def load_rvm
           return true if defined?(RVM)
           puts "Loading RVM"

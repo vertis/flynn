@@ -1,5 +1,6 @@
-require 'flynn/recipes'
+require 'flynn/helpers'
 require 'flynn/config'
+require 'flynn/recipes'
 
 module Flynn
   def self.config

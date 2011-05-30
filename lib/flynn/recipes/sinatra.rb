@@ -21,13 +21,6 @@ module Flynn
       end
 
       private
-        def inside(app_name)
-          current_dir = Dir.pwd
-          Dir.chdir(app_name)
-          yield
-          Dir.chdir(current_dir)
-        end
-
         def create_gemfile
           inside(@app_name) do
             File.open("Gemfile", 'w') {|f| f.write(gemfile) }
