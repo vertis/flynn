@@ -6,5 +6,10 @@ module Flynn
       yield
       Dir.chdir(current_dir)
     end
+
+    def run(cmd)
+      puts "Running: #{cmd}"
+      system(cmd)
+    end
   end
 end

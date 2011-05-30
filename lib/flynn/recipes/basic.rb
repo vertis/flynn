@@ -5,16 +5,10 @@ module Flynn
         require 'fileutils'
         puts "Creating #{app_name}"
         FileUtils.mkdir(app_name)
-        FileUtils.chdir(app_name)
-        system("bundle init")
-
-        rvmrc = <<-RVMRC
-        rvm_gemset_create_on_use_flag=1
-        rvm #{@ruby_version}@#{app_name}
-        RVMRC
-        File.open(".rvmrc", 'w') {|f| f.write(rvmrc) }
-        system("rvm rvmrc trust")
-        FileUtils.chdir('..')
+        inside app_name do
+          run("bundle init")
+        end
+        create_project_rvmrc(app_name)
       end
     end
   end

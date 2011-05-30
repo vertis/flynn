@@ -15,17 +15,12 @@ module Flynn
         rvm use #{@ruby_version}@#{app_name}
         RVMRC
         File.open("#{app_name}/.rvmrc", 'w') {|f| f.write(rvmrc) }
-        system("cd #{app_name} && rvm rvmrc trust")
+        inside app_name do
+          run("rvm rvmrc trust")
+        end
       end
 
       private
-        def restore_rvmrc
-          FileUtils.mv('.rvmrc_backup','.rvmrc')
-        end
-
-        def disable_rvmrc
-          FileUtils.mv('.rvmrc','.rvmrc_backup')
-        end
 
         def load_rvm
           return true if defined?(RVM)

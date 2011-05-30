@@ -14,9 +14,9 @@ module Flynn
         create_app_rb
         create_standard_directories
         create_project_rvmrc(app_name)
-        #system("rvm rvmrc trust")
+
         inside(@app_name) do
-          system("bundle install")
+          run("bundle install")
         end
       end
 

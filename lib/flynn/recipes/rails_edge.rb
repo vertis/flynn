@@ -14,8 +14,8 @@ module Flynn
 
         bundle_cmd = "bundle install --gemfile #{rails_base}/Gemfile --binstubs"
         puts "Creating '#{app_name}' running edge rails (this could take a while)"
-        system("rvm gemset use #{app_name} && #{bundle_cmd}")
-        system("rvm gemset use #{app_name} && #{rails_base}/bin/rails new #{app_name} --dev #{options.join(" ")}")
+        run("rvm gemset use #{app_name} && #{bundle_cmd}")
+        run("rvm gemset use #{app_name} && #{rails_base}/bin/rails new #{app_name} --dev #{options.join(" ")}")
         create_project_rvmrc(app_name)
         #restore_rvmrc
       end
