@@ -16,4 +16,8 @@ describe Flynn::Recipes do
     Flynn::Recipes.load_user_recipes
     lambda { Flynn::Recipes::Test.new }.should_not raise_error
   end
+
+  it "should return a list of all defined recipes" do
+    Flynn::Recipes.available_recipes.should == [:Gem, :Basic, :Rails2, :Rails3, :RailsEdge, :Sinatra, :Test]
+  end
 end

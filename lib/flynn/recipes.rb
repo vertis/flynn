@@ -13,5 +13,9 @@ module Flynn
         require child.expand_path if child.extname=='.rb'
       end
     end
+
+    def self.available_recipes
+      Flynn::Recipes.constants - [:RvmBase]
+    end
   end
 end
