@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'erb'
 
 module Flynn
   module Recipes
@@ -6,38 +7,26 @@ module Flynn
       include Flynn::Helpers
 
       def create(app_name, options=[])
+        namespace = lambda do
+          @app_name = app_name
+          @app_description = ""
+
+          #TODO: make this pull from your git details if they exist
+          @app_author = "You"
+          @app_author_email = "you@yourdomain.com"
+        end.call
+
         check_for_node
         check_for_npm
-        FileUtils.mkdir_p(app_name)
+
+        #run("git clone https://github.com/vertis/flynn-node-template.git #{app_name}")
+        run("git clone #{Flynn.root}/../flynn-node-template #{app_name}")
         inside app_name do
-          create_file('app.js', <<-CONTENT
-var express = require('express');
-
-var app = express.createServer(express.logger());
-
-app.get('/', function(request, response) {
-  response.send('Hello World!');
-});
-
-var port = process.env.PORT || 3000;
-console.log("Listening on " + port);
-
-app.listen(port);
-          CONTENT
-          )
-          create_file('package.json', %Q|
-{
-  "name": "#{app_name}",
-  "version": "0.0.1",
-  "dependencies": {
-    "express": "2.2.0"
-  }
-}
-|
-        )
-        FileUtils.mkdir_p('public')
-        FileUtils.mkdir_p('views')
-        run("npm install")
+          template = ERB.new(File.read('package.json.erb'), nil)
+          create_file('package.json', template.result(namespace.send(:binding)))
+          run('rm package.json.erb')
+          run('git remote rm origin 2>/dev/null >/dev/null') # Borrowed from https://github.com/mwotton/instigator
+          run("npm install")
         end
       end
 

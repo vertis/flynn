@@ -8,4 +8,8 @@ module Flynn
     @config = Flynn::Config.new
     @config.build
   end
+
+  def self.root
+    @root ="#{File.expand_path('../..',__FILE__)}"
+  end
 end
