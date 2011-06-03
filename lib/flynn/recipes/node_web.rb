@@ -19,8 +19,7 @@ module Flynn
         check_for_node
         check_for_npm
 
-        #run("git clone https://github.com/vertis/flynn-node-template.git #{app_name}")
-        run("git clone #{Flynn.root}/../flynn-node-template #{app_name}")
+        run("git clone https://github.com/vertis/flynn-node-template.git #{app_name}")
         inside app_name do
           template = ERB.new(File.read('package.json.erb'), nil)
           create_file('package.json', template.result(namespace.send(:binding)))
