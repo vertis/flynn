@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Luke Chadwick"]
   s.email       = ["luke.a.chadwick@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/vertis/flynn"
   s.summary     = %q{Flynn helps create ruby projects of different types}
   s.description = %q{Whenever I start a new ruby project, I usually find myself repeating the same setup steps.
 Flynn is a tool to help create common project types with sane defaults. }
