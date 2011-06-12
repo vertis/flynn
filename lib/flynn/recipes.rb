@@ -5,6 +5,7 @@ require 'flynn/recipes/node_web'
 require 'flynn/recipes/rails2'
 require 'flynn/recipes/rails3'
 require 'flynn/recipes/rails_edge'
+require 'flynn/recipes/refinerycms'
 require 'flynn/recipes/sinatra'
 
 module Flynn
