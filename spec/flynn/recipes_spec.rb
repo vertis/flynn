@@ -18,6 +18,6 @@ describe Flynn::Recipes do
   end
 
   it "should return a list of all defined recipes" do
-    Flynn::Recipes.available_recipes.should == [:Gem, :Basic, :Rails2, :Rails3, :RailsEdge, :Sinatra, :Test]
+    Flynn::Recipes.available_recipes.should == [:Gem, :Basic, :Rails2, :Rails3, :RailsEdge, :Refinerycms, :Sinatra, :Test]
   end
 end
