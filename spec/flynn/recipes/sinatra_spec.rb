@@ -8,7 +8,7 @@ describe Flynn::Recipes::Sinatra do
 
   context "creating a sinatra project" do
     before(:all) do
-      Dir.chdir('tmp')
+      Dir.chdir(Dir.tmpdir)
       subject.create('my_sinatra')
     end
 

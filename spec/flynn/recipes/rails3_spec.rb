@@ -8,7 +8,7 @@ describe Flynn::Recipes::Rails3 do
 
   context "creating a rails3 project" do
     before(:all) do
-      Dir.chdir('tmp')
+      Dir.chdir(Dir.tmpdir)
       subject.create('my_rails3')
     end
 

@@ -7,7 +7,7 @@ describe Flynn::Recipes::NodeWeb do
 
   context "creating a node web project" do
     before(:all) do
-      Dir.chdir('tmp')
+      Dir.chdir(Dir.tmpdir)
       subject.create('my_node')
     end
 

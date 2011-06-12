@@ -8,7 +8,7 @@ describe Flynn::Recipes::RailsEdge do
 
   context "creating a rails edge project" do
     before(:all) do
-      Dir.chdir('tmp')
+      Dir.chdir(Dir.tmpdir)
       subject.create('my_edge')
     end
 

@@ -7,7 +7,7 @@ describe Flynn::Recipes::Basic do
   end
 
   it "should create a new basic project with the correct name" do
-    Dir.chdir('tmp')
+    Dir.chdir(Dir.tmpdir)
     subject.create('my_directory')
     File.exists?('my_directory').should be_true
     FileUtils.rm_r('my_directory')

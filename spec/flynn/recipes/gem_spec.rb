@@ -8,7 +8,7 @@ describe Flynn::Recipes::Gem do
 
   context "creating a gem project" do
     before(:all) do
-      Dir.chdir('tmp')
+      Dir.chdir(Dir.tmpdir)
       subject.create('my_gem')
     end
 
