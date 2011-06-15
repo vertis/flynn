@@ -1,3 +1,4 @@
+require 'flynn/cli'
 require 'flynn/helpers'
 require 'flynn/config'
 require 'flynn/recipes'

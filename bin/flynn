@@ -3,29 +3,5 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require "rubygems" # ruby1.9 doesn't "require" it though
 require 'flynn'
-require 'active_support/inflector'
 
-def print_usage
-  puts "Usage: flynn <recipe> <app_name> [options]"
-  available_recipes = Flynn::Recipes.available_recipes.map {|recipe| recipe.to_s.underscore }
-  puts ""
-  puts "Available recipes:"
-  available_recipes.each do |recipe|
-    puts "  #{recipe}"
-  end
-end
-
-
-recipe = ARGV.shift
-if recipe == 'help'
-  print_usage
-  exit 0
-end
-app_name = ARGV.shift
-if Flynn::Recipes.const_defined?(recipe.camelize)
-  Flynn::Recipes.const_get(recipe.camelize).new.create(app_name, ARGV)
-else
-  $stderr.puts "Flynn doesn't know how to create: #{recipe}"
-  puts ""
-  print_usage
-end
+Flynn::Cli.run
