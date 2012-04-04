@@ -13,6 +13,8 @@ module Flynn
     end
 
     def self.run(options)
+      # TODO: Move somewhere else
+      Flynn::Recipes.load_user_recipes
       recipe = options.shift
       if recipe == 'help'
         print_usage

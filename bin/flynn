@@ -4,4 +4,4 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require "rubygems" # ruby1.9 doesn't "require" it though
 require 'flynn'
 
-Flynn::Cli.run
+Flynn::Cli.run(ARGV)
