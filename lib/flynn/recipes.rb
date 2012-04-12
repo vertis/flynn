@@ -1,6 +1,7 @@
 require 'flynn/recipes/rvm_base'
 require 'flynn/recipes/basic'
 require 'flynn/recipes/gem'
+require 'flynn/recipes/grape'
 require 'flynn/recipes/node_web'
 require 'flynn/recipes/rails2'
 require 'flynn/recipes/rails3'
@@ -12,7 +13,7 @@ module Flynn
   module Recipes
     def self.load_user_recipes
       Flynn.config.recipes_directory.children.each do |child|
-        require child.expand_path if child.extname=='.rb'
+        require child.expand_path.to_s if child.extname=='.rb'
       end
     end
 
