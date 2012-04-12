@@ -50,7 +50,7 @@ module Flynn
           @config_ru ||= <<-EOS
 require "./app" # ruby1.9 compatible
 
-run #{@app_name.capitalize}::API
+run #{@app_name.classify}API
           EOS
         end
 
@@ -60,13 +60,12 @@ require 'rubygems'
 require 'bundler/setup'
 require 'grape'
 
-class #{@app_name.capitalize}::API < Grape::API
-  version 'v1', :using => :header, :vendor => #{@app_name}
+class #{@app_name.classify}API < Grape::API
+  version 'v1', :using => :header, :vendor => '#{@app_name}'
   
-  resource :foo do
-    get :bar do
-      "FooBar"
-    end
+  desc "Returns foo", { :params => { "id" => "a required id" } }
+  get 'foo/:id' do
+    { 'foo' => params[:id] }
   end
 end  
           EOS
