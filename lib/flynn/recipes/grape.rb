@@ -2,18 +2,15 @@ require 'fileutils'
 
 module Flynn
   module Recipes
-    class Grape < RvmBase
+    class Grape
       def create(app_name, options=[])
         @app_name = app_name
-        RVM.gemset_create app_name
-        RVM.gemset_use! app_name
         puts "Creating #{app_name}"
         FileUtils.mkdir(app_name)
         create_gemfile
         create_config_ru
         create_app_rb
         create_standard_directories
-        create_project_rvmrc(app_name)
 
         inside(@app_name) do
           run("bundle install")

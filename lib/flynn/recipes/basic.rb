@@ -1,6 +1,6 @@
 module Flynn
   module Recipes
-    class Basic < RvmBase
+    class Basic
       def create(app_name, options={})
         require 'fileutils'
         puts "Creating #{app_name}"
@@ -8,7 +8,6 @@ module Flynn
         inside app_name do
           run("bundle init")
         end
-        create_project_rvmrc(app_name)
       end
     end
   end
